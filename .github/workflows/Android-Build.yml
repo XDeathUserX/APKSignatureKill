@@ -54,7 +54,7 @@ jobs:
         chmod +x ./gradlew
         ./gradlew "assembleRelease"
         # bash gradlew build
-        mv $(find app/build/outputs/apk/ -type f | grep -E "\.apk$") ${{ github.workspace }}/signaturekillerex-android-${{ steps.version.outputs.date }}-${{ steps.version.outputs.version }}.apk
+        mv $(find app/build/outputs/apk/release/ -type f | grep -E "\.apk$") ${{ github.workspace }}/signaturekiller-android-${{ steps.version.outputs.date }}-${{ steps.version.outputs.version }}.apk
 
     - name: Release SignatureKiller (SignatureKiller-Android)
       uses: softprops/action-gh-release@v2
@@ -63,7 +63,7 @@ jobs:
         tag_name: SignatureKillerEx
         files: ${{ github.workspace }}/signaturekiller-android-${{ steps.version.outputs.date }}-${{ steps.version.outputs.version }}.apk
 
-    - name: Release SignatureKillerEx ${{ steps.version.outputs.date }}
+    - name: Release SignatureKiller ${{ steps.version.outputs.date }}
       uses: softprops/action-gh-release@v2
       with:
         name: ${{ steps.version.outputs.date }}
